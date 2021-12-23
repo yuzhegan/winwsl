@@ -1,6 +1,7 @@
 
 <!-- TOC GFM -->
 
++ [SOS](#sos)
 + [我的工作环境 `ArchLinux Wsl2` `Total Commander` `VimDestop` `Utools`](#我的工作环境-archlinux-wsl2-total-commander-vimdestop-utools)
 	* [winwsl2 安装ArchLinux的方法](#winwsl2-安装archlinux的方法)
 	* [第一步：先安装wsl2](#第一步先安装wsl2)
@@ -12,6 +13,9 @@
 	* [Utools](#utools)
 
 <!-- /TOC -->
+
+# SOS
+很重大的发现,在`windows` 和`vim` 交互时候,一定要在**写入模式** 下粘贴,要不然,粘贴的东西会有差异
 
 
 # 我的工作环境 `ArchLinux Wsl2` `Total Commander` `VimDestop` `Utools` 
