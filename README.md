@@ -1,20 +1,21 @@
 
 <!-- TOC GFM -->
 
-+ [SOS](#sos)
++ [important](#important)
 + [我的工作环境 `ArchLinux Wsl2` `Total Commander` `VimDestop` `Utools`](#我的工作环境-archlinux-wsl2-total-commander-vimdestop-utools)
 	* [winwsl2 安装ArchLinux的方法](#winwsl2-安装archlinux的方法)
 	* [第一步：先安装wsl2](#第一步先安装wsl2)
 	* [第二步就是安装`ArchLinux` 啦，安装过程还是比较简单，直接下载改个后缀就能安装](#第二步就是安装archlinux-啦安装过程还是比较简单直接下载改个后缀就能安装)
 		- [安装`LxRunOffline`](#安装lxrunoffline)
 		- [备份和还原](#备份和还原)
+			+ [wsl2硬件资源分配](#wsl2硬件资源分配)
 	* [配置Total Commander](#配置total-commander)
 			+ [跳转目录](#跳转目录)
 	* [Utools](#utools)
 
 <!-- /TOC -->
 
-# SOS
+# important
 很重大的发现,在`windows` 和`vim` 交互时候,一定要在**写入模式** 下粘贴,要不然,粘贴的东西会有差异
 
 
@@ -184,6 +185,18 @@ sudo pacman -Sy xfce4 xfce4-terminal
 然后就会出现下面界面:  
 
 ![xlaunch](img/xlu.png) 
+#### wsl2硬件资源分配
+在用户目录`C:\\Users\\<username>` 下创建`.wslconfig` 文件:
+
+```
+[wsl2]
+#kernel=C:\\temp\\myCustomKernel
+memory=4GB # 将WSL 2中的VM内存限制为4 GB
+processors=2 #使WSL 2 VM使用两个虚拟处理器
+swap=8GB #将WSL分一个缓存
+```
+
+<++>
 
 ## 配置Total Commander
 基本开箱即用, 就是加了两个`bat` 文件,一个是用来在工作目录中打开`windows terminal` , 另外一个是在工作目录打开`jupyter lab` 因为是经常要用工具,分别绑定了快捷键`alt` + `w` , `alt` + `j`  
