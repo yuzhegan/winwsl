@@ -13,6 +13,7 @@
 	* [开机启动项](#开机启动项)
 			+ [跳转目录](#跳转目录)
 	* [Utools](#utools)
+		- [全局快捷键](#全局快捷键)
 	* [改键工具, `Powertoys`](#改键工具-powertoys)
 
 <!-- /TOC -->
@@ -365,6 +366,14 @@ shell:startup
 | `1`               | 如果是目录则进入, 如果是文件则打开                    |
 ## Utools
 即装即用, 不要就拆掉
+### 全局快捷键
+| 快捷键            | 功能     |
+|-------------------|----------|
+| `alt` `shift` `F` | 翻译     |
+| `alt` `shift` `P` | 粘贴板   |
+| `alt` `shfit` `B` | bing搜索 |
+| `alt` `shift` `J` | 截图     |
+
 ## 改键工具, `Powertoys` 
 ![快捷键](img/kjj.png) 
 | 快捷键                 | 原来快捷键           | 功能               |
@@ -380,3 +389,4 @@ shell:startup
 | `win` `shift` `h`      | `win` `ctrl` `left`  | 回到上一个虚拟桌面 |
 | `win` `shift` `l`      | `win` `ctrl` `right` | 跳到下一个虚拟桌面 |
 | `capslk`               | `esc`                | 交换功能           |
+
