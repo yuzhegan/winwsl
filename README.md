@@ -12,8 +12,10 @@
 	* [配置Total Commander](#配置total-commander)
 			+ [跳转目录](#跳转目录)
 	* [Utools](#utools)
+	* [改键工具, `Powertoys`](#改键工具-powertoys)
 
 <!-- /TOC -->
+
 
 # important
 很重大的发现,在`windows` 和`vim` 交互时候,一定要在**写入模式** 下粘贴,要不然,粘贴的东西会有差异
@@ -196,7 +198,6 @@ processors=2 #使WSL 2 VM使用两个虚拟处理器
 swap=8GB #将WSL分一个缓存
 ```
 
-<++>
 
 ## 配置Total Commander
 基本开箱即用, 就是加了两个`bat` 文件,一个是用来在工作目录中打开`windows terminal` , 另外一个是在工作目录打开`jupyter lab` 因为是经常要用工具,分别绑定了快捷键`alt` + `w` , `alt` + `j`  
@@ -350,10 +351,18 @@ jupyter lab
 | `1`               | 如果是目录则进入, 如果是文件则打开                    |
 ## Utools
 即装即用, 不要就拆掉
-
-
-
-
-
-
-
+## 改键工具, `Powertoys` 
+![快捷键](img/kjj.png) 
+| 快捷键                 | 原来快捷键           | 功能               |
+|------------------------|----------------------|--------------------|
+| `Alt` `n`              | `ctrl` `tab`         | 在单个应用切换标签 |
+| `win` `enter`          | `win` `up`           | 切换分屏,全屏      |
+| `win` `shift`  `enter` | `win` `down`         | 切换分屏,退出全屏  |
+| `win` `h`              | --                   | 怕误按,把他取消    |
+| `win` `j`              | `alt` `tab`          | 切换应用           |
+| `win` `k`              | `alt` `shift` `tab`  | 反方向切换应用     |
+| `win` `n`              | `win` `right`        | 交换当前窗口的位置 |
+| `win` `p`              | `win` `left`         | 交换当前窗口的位置 |
+| `win` `shift` `h`      | `win` `ctrl` `left`  | 回到上一个虚拟桌面 |
+| `win` `shift` `l`      | `win` `ctrl` `right` | 跳到下一个虚拟桌面 |
+| `capslk`               | `esc`                | 交换功能           |
