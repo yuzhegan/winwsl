@@ -10,6 +10,7 @@
 		- [备份和还原](#备份和还原)
 			+ [wsl2硬件资源分配](#wsl2硬件资源分配)
 	* [配置Total Commander](#配置total-commander)
+	* [开机启动项](#开机启动项)
 			+ [跳转目录](#跳转目录)
 	* [Utools](#utools)
 	* [改键工具, `Powertoys`](#改键工具-powertoys)
@@ -224,6 +225,18 @@ wsl
 cd %1
 jupyter lab
 ```
+## 开机启动项
+
+将[工具](https://linuxyu.oss-cn-beijing.aliyuncs.com/TotalCMD.zip) 放在`D` 盘 
+
+在`win` + `r` 打开`cmd` 运行:
+```
+shell:startup
+```
+
+将里面的`vimd.exe` 创建一个快捷键方式,快捷键方式拖入到开机启动项中,开机就可以用`vimdistop` 
+
+还有上面的`Xlaunch` 的快捷方式也加入到开机启动项中
 
 注意 `wsl` `jupyter lab` 都要加入到系统环境变量中
 
