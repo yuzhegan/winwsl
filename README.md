@@ -225,6 +225,8 @@ wsl
 cd %1
 jupyter lab
 ```
+注意 `wsl` `jupyter lab` 都要加入到系统环境变量中
+
 ## 开机启动项
 
 将[工具](https://linuxyu.oss-cn-beijing.aliyuncs.com/TotalCMD.zip) 放在`D` 盘 
@@ -238,7 +240,6 @@ shell:startup
 
 还有上面的`Xlaunch` 的快捷方式也加入到开机启动项中
 
-注意 `wsl` `jupyter lab` 都要加入到系统环境变量中
 
 [VimDestop](https://github.com/goreliu/vimdesktop/wiki/TC%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%88%97%E8%A1%A8)  的使用参照:  
 #### 跳转目录
