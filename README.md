@@ -9,6 +9,8 @@
 		- [安装`LxRunOffline`](#安装lxrunoffline)
 		- [备份和还原](#备份和还原)
 			+ [wsl2硬件资源分配](#wsl2硬件资源分配)
+	* [wsl2 占用内存过高问题](#wsl2-占用内存过高问题)
+		- [WSL2(Arch Linux)使用systemd报错问题](#wsl2arch-linux使用systemd报错问题)
 	* [配置Total Commander](#配置total-commander)
 	* [开机启动项](#开机启动项)
 			+ [跳转目录](#跳转目录)
@@ -196,8 +198,53 @@ sudo pacman -Sy xfce4 xfce4-terminal
 [wsl2]
 #kernel=C:\\temp\\myCustomKernel
 memory=4GB # 将WSL 2中的VM内存限制为4 GB
-processors=2 #使WSL 2 VM使用两个虚拟处理器
-swap=8GB #将WSL分一个缓存
+processors=4 #使WSL 2 VM使用两个虚拟处理器
+swap=2GB
+localhostForwarding=true
+
+```
+
+## wsl2 占用内存过高问题
+
+[参考1](https://my.oschina.net/u/2266306/blog/4680942) 
+
+[参考2](https://zhuanlan.zhihu.com/p/166102340?ivk_sa=1024320u) 
+
+做一个定时任务,每5分钟清理一次
+```
+yay -S cronie
+sudo crontab -e -u root
+sudo crontab -e -u dav
+
+```
+
+会用编辑器打开文件, 添加一下内容:
+```
+*/15 * * * * sync; echo 3 > /proc/sys/vm/drop_caches; touch /root/drop_caches_last_run
+```
+然后再bash中加入
+
+```
+sudo nano ~/.bashrc
+[ -z "$(ps -ef | grep cron | grep -v grep)" ] && sudo /etc/init.d/cron start &> /dev/null
+```
+
+我用的fish, 将代码中的`$` 替换成`awk` , 编辑`~/.config/fish/config.fish` 
+
+### WSL2(Arch Linux)使用systemd报错问题
+[参考这篇](https://blog.csdn.net/weixin_29266749/article/details/116867124) 
+选择`.NET Core runtime runtime 5.0` 的安装即可
+
+启动`cronie` 服务
+```
+#设置开机启动
+sudo systemctl enable cronie.service
+#立即启动
+sudo systemctl start cronie.service
+```
+在wsl终端上可以通过查看/ root / drop_caches_last_run上次修改日期来检查cron作业是否正在相应地运行：
+```
+sudo stat -c '%y' /root/drop_caches_last_run
 ```
 
 
