@@ -213,7 +213,7 @@ localhostForwarding=true
 做一个定时任务,每5分钟清理一次
 ```
 yay -S cronie
-sudo crontab -e -u root
+sudo crontab -e -u root  #这个任务只对root用户有效
 sudo crontab -e -u dav
 
 ```
@@ -238,8 +238,10 @@ sudo nano ~/.bashrc
 启动`cronie` 服务
 ```
 #设置开机启动
-sudo systemctl enable cronie.service
-#立即启动
+sudo systemctl enable cronie.service #没用
+
+#立即启动 #每次打开都需要
+gein -s
 sudo systemctl start cronie.service
 ```
 在wsl终端上可以通过查看/ root / drop_caches_last_run上次修改日期来检查cron作业是否正在相应地运行：
