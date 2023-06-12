@@ -3,20 +3,25 @@
 
 + [important](#important)
 + [我的工作环境 `ArchLinux Wsl2` `Total Commander` `VimDestop` `Utools`](#我的工作环境-archlinux-wsl2-total-commander-vimdestop-utools)
-	* [winwsl2 安装ArchLinux的方法](#winwsl2-安装archlinux的方法)
-	* [第一步：先安装wsl2](#第一步先安装wsl2)
-	* [第二步就是安装`ArchLinux` 啦，安装过程还是比较简单，直接下载改个后缀就能安装](#第二步就是安装archlinux-啦安装过程还是比较简单直接下载改个后缀就能安装)
-		- [安装`LxRunOffline`](#安装lxrunoffline)
-		- [备份和还原](#备份和还原)
-			+ [wsl2硬件资源分配](#wsl2硬件资源分配)
-	* [wsl2 占用内存过高问题](#wsl2-占用内存过高问题)
-		- [WSL2(Arch Linux)使用systemd报错问题](#wsl2arch-linux使用systemd报错问题)
-	* [配置Total Commander](#配置total-commander)
-	* [开机启动项](#开机启动项)
-			+ [跳转目录](#跳转目录)
-	* [Utools](#utools)
-		- [全局快捷键](#全局快捷键)
-	* [改键工具, `Powertoys`](#改键工具-powertoys)
+    * [winwsl2 安装ArchLinux的方法](#winwsl2-安装archlinux的方法)
+    * [第一步：先安装wsl2](#第一步先安装wsl2)
+    * [第二步就是安装`ArchLinux` 啦，安装过程还是比较简单，直接下载改个后缀就能安装](#第二步就是安装archlinux-啦安装过程还是比较简单直接下载改个后缀就能安装)
+        - [安装`LxRunOffline`](#安装lxrunoffline)
+        - [备份和还原](#备份和还原)
+            + [wsl2硬件资源分配](#wsl2硬件资源分配)
+    * [wsl2 占用内存过高问题](#wsl2-占用内存过高问题)
+        - [WSL2(Arch Linux)使用systemd报错问题](#wsl2arch-linux使用systemd报错问题)
+        - [wsl ranger or lf config](#wsl-ranger-or-lf-config)
+            + [wsl2 ranger or lf image preview](#wsl2-ranger-or-lf-image-preview)
+        - [wsl2 Chinese input method](#wsl2-chinese-input-method)
+            + [Install fcitx](#install-fcitx)
+    * [配置Total Commander](#配置total-commander)
+    * [开机启动项](#开机启动项)
+        - [Use Linux st terminal as default terminal](#use-linux-st-terminal-as-default-terminal)
+            + [跳转目录](#跳转目录)
+    * [Utools](#utools)
+        - [全局快捷键](#全局快捷键)
+    * [改键工具, `Powertoys`](#改键工具-powertoys)
 
 <!-- /TOC -->
 
@@ -249,6 +254,42 @@ sudo systemctl start cronie.service
 sudo stat -c '%y' /root/drop_caches_last_run
 ```
 
+### wsl ranger or lf config
+| ShortCut | functions               |
+|----------|-------------------------|
+| \<C-c\>  | copy                    |
+| \<C-v\>  | paste                   |
+| \<C-d\>  | open file with edge     |
+| \<C-d\>  | open ipynb              |
+| \<C-b\>  | open img with photoshop |
+
+#### wsl2 ranger or lf image preview
+as wsl2 is Wayland can't use ueberzug for x11, and we can use `ueberzugpp` 
+[wayland_ueberzug](https://github.com/jstkdng/ueberzugpp)
+
+
+### wsl2 Chinese input method
+just can use fcitx not fcitx5 for just in st termianl
+#### Install fcitx
+
+```fish
+yay -S fcitx fonts-noto-cjk fonts-noto-color-emoji dbus-x11
+```
+add this code to the `~/.profile` 
+```bash
+#!/bin/bash
+export QT_IM_MODULE=fcitx
+export GTK_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
+export DefaultIMModule=fcitx
+
+#可选，fcitx 自启
+fcitx-autostart &>/dev/null
+```
+
+
+
+
 
 ## 配置Total Commander
 基本开箱即用, 就是加了两个`bat` 文件,一个是用来在工作目录中打开`windows terminal` , 另外一个是在工作目录打开`jupyter lab` 因为是经常要用工具,分别绑定了快捷键`alt` + `w` , `alt` + `j`  
@@ -289,6 +330,21 @@ shell:startup
 将里面的`vimd.exe` 创建一个快捷键方式,快捷键方式拖入到开机启动项中,开机就可以用`vimdistop` 
 
 还有上面的`Xlaunch` 的快捷方式也加入到开机启动项中
+
+### Use Linux st terminal as default terminal
+how to config:
+
+you can ued ahk to config this, just create a `.bat` files:
+```bat
+wsl -d $wsl\dav\home\ st
+```
+If you don't know how to configure, you can use:
+```
+wsl --help
+```
+Then use bonding `Win+Enter` to run this bat, but is you run `.bat` directly, there will have a black terminal, so you can use `.vbs` to run this bat file, and then binding this vbs file to the shortcut.
+
+
 
 
 [VimDestop](https://github.com/goreliu/vimdesktop/wiki/TC%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%88%97%E8%A1%A8)  的使用参照:  
