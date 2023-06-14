@@ -13,7 +13,7 @@
         - [WSL2(Arch Linux)使用systemd报错问题](#wsl2arch-linux使用systemd报错问题)
         - [wsl ranger or lf config](#wsl-ranger-or-lf-config)
             + [wsl2 ranger or lf image preview](#wsl2-ranger-or-lf-image-preview)
-        - [wsl2 Chinese input method](#wsl2-chinese-input-method)
+        - [wslg Chinese input method](#wslg-chinese-input-method)
             + [Install fcitx](#install-fcitx)
     * [配置Total Commander](#配置total-commander)
     * [开机启动项](#开机启动项)
@@ -202,9 +202,12 @@ sudo pacman -Sy xfce4 xfce4-terminal
 ```
 [wsl2]
 #kernel=C:\\temp\\myCustomKernel
-memory=4GB # 将WSL 2中的VM内存限制为4 GB
-processors=4 #使WSL 2 VM使用两个虚拟处理器
-swap=2GB
+[wsl2]
+#guiApplications=false
+memory=5GB # 将WSL 2中的VM内存限制为4 GB
+processors=6 #使WSL 2 VM使用两个虚拟处理器
+swap=4GB
+swapFile=D:\\Arch\\swap.vhdx
 localhostForwarding=true
 
 ```
@@ -268,8 +271,27 @@ as wsl2 is Wayland can't use ueberzug for x11, and we can use `ueberzugpp`
 [wayland_ueberzug](https://github.com/jstkdng/ueberzugpp)
 
 
-### wsl2 Chinese input method
-just can use fcitx not fcitx5 for just in st termianl
+### wslg Chinese input method
+```sh
+yay -S fcitx5-im fcitx5-chinese-addons fcitx5-pinyin-zhwiki fcitx5-input-support
+
+# fcitx5框架组件、中文输入法、中文维基词库、输入法配置文件
+```
+if you want to use fcitx5 in wslg, u should add blow config to you `~/.profile` 
+```sh
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
+export SDL_IM_MODULE=fcitx
+export GLFW_IM_MODULE=ibus
+fcitx5 --disable=wayland -d  --verbose '*'=0
+# the last code must add, otherwise won't start fcitx5
+
+```
+
+
+
+
 #### Install fcitx
 
 ```fish
